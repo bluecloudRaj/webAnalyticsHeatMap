@@ -1,0 +1,35 @@
+<div id="boxes">
+
+    <div id="aside">
+        <md-card id="info">
+            <md-card-content>
+                <p><md-icon mdTooltip="Visitor" color="accent">person</md-icon> <span *ngIf="session">#{{ session.visitor }}</span></p>
+                <p><md-icon mdTooltip="Date" color="accent">date_range</md-icon> <span *ngIf="session">{{ session.meta.createdAt | date: 'dd.MM.yyyy HH:mm:ss' }}</span></p>
+                <p><md-icon mdTooltip="Screen resolution" color="accent">aspect_ratio</md-icon> <span *ngIf="session">{{ session.meta.width }}x{{ session.meta.height }}px</span></p>
+                <p><md-icon mdTooltip="Page" color="accent">web_asset</md-icon> <span *ngIf="session">{{ session.page }}</span></p>
+                <p><md-icon mdTooltip="Operation system" color="accent">devices_other</md-icon> <span *ngIf="session">{{ session.meta.agent.os }}</span></p>
+                <p><md-icon mdTooltip="Browser" color="accent">web</md-icon> <span *ngIf="session">{{ session.meta.agent.browser }}</span></p>
+                <p><md-icon mdTooltip="IP address" color="accent">router</md-icon> <span *ngIf="session">{{ session.meta.ip }}</span></p>
+            </md-card-content>
+        </md-card>
+
+        <br>
+
+        <md-card id="control">
+            <div><button md-button color="primary" [disabled]="this.playing" (click)="play()"><md-icon>play_circle_filled</md-icon> Play</button></div>
+            <div><button md-button color="primary" [disabled]="!this.playing" (click)="pause()"><md-icon>pause_circle_filled</md-icon> Pause</button></div>
+            <div><button md-button color="primary" [disabled]="!this.playing && this.currentIndex == 0" (click)="stop()"><md-icon>stop</md-icon> Stop</button></div>
+            <div><md-progress-bar color="primary" [value]="getCurrentProgress()" mode="determinate"></md-progress-bar></div>
+        </md-card>
+    </div>
+
+    <md-card id="article">
+        <div id="tracking-container">
+            <iframe id="live-iframe" scrolling="no"></iframe>
+            <div id="cursors">
+                <div id="cursor" class="cursor"></div>
+            </div>
+        </div>
+    </md-card>
+
+</div>

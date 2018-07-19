@@ -1,0 +1,10 @@
+<md-grid-list cols="5" rowHeight="200px" id="website-dashboard">
+    <md-grid-tile [colspan]="4" [rowspan]="1" [style.background]="'lightblue'"><a routerLink="./live-tracking" md-ripple>Live tracking</a></md-grid-tile>
+    <md-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'lightgreen'"><a routerLink="./settings" md-ripple>Settings</a></md-grid-tile>
+    <md-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'lightgray'"><a routerLink="./heat-maps" md-ripple>Heat maps</a></md-grid-tile>
+    <md-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'lightcoral'"><a routerLink="./reports" md-ripple>Reports</a></md-grid-tile>
+    <md-grid-tile [colspan]="2" [rowspan]="1" [style.background]="'lightsalmon'"><a routerLink="./visitors/" md-ripple>Visitors</a></md-grid-tile>
+    <md-grid-tile [colspan]="2" [rowspan]="1" [style.background]="'lightpink'"><a routerLink="./user-interface" md-ripple>User interface analyser</a></md-grid-tile>
+    <md-grid-tile md-ripple (click)="showIntegration()" [colspan]="1" [rowspan]="1" [style.background]="'lightseagreen'">Integration</md-grid-tile>
+    <md-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'#77BFC7'"><a routerLink="./help" md-ripple>Help</a></md-grid-tile>
+</md-grid-list>

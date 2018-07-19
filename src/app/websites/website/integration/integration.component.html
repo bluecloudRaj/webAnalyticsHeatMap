@@ -1,0 +1,17 @@
+<h1 md-dialog-title>Integration</h1>
+<div md-dialog-content>
+    <p>Insert this code into <code>&lt;head&gt;&lt;/head&gt;</code> section on every page you want to track:</p>
+    <pre>
+&lt;script type='text/javascript'&gt;
+    {{ '(function(w,d,u) {' }}
+        {{ 'w.heater=w.heater||function(){' }}
+        w.heater.key = arguments[0];a=d.getElementsByTagName('head')[0];
+        r=d.createElement('script');r.async=1;r.type='text/javascript';
+        {{ 'r.src=u;a.appendChild(r);};' }}
+    })(window,document,'{{ data.apiUrl }}/heater.min.js');
+    heater('{{ data.key }}');
+&lt;/script&gt;</pre>
+</div>
+<div md-dialog-actions>
+    <button md-button md-dialog-close>OK</button>
+</div>

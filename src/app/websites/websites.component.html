@@ -1,0 +1,20 @@
+<md-card *ngIf="websites.length == 0">You don't have any website yet. Click the plus button to add one.</md-card>
+
+<div id="websites">
+	<md-card class="website" *ngFor="let website of websites">
+		<md-card-header>
+			<md-icon md-card-avatar>domain</md-icon>
+			<md-card-title>Website</md-card-title>
+	    	<md-card-subtitle>{{ website.url }}</md-card-subtitle>
+		</md-card-header>
+		<img class="" md-card-image src="http://lorempixel.com/450/300/">
+		<md-card-actions>
+		    <a md-button color="primary" routerLink="/website/{{ website._id }}">Details</a>
+		    <button md-button color="warn" (click)="onDelete(website)">Delete</button>
+		</md-card-actions>
+	</md-card>
+</div>
+
+<button md-fab class="add-fab" routerLink="/websites/add">
+	<md-icon>add</md-icon>
+</button>

@@ -1,0 +1,41 @@
+<div id="boxes">
+
+    <div id="aside">
+        <md-card>
+            <md-select placeholder="Choose a page" (change)="onChange($event)" name="page">
+                <md-option *ngFor="let page of this.pages" [value]="page._id">
+                    {{ page.page }}
+                </md-option>
+            </md-select>
+        </md-card>
+
+        <br>
+
+        <md-card *ngIf="this.page">
+            <div>Move page content:</div>
+            <br>
+            <button md-button color="primary" (click)="up()"><md-icon>expand_less</md-icon> up</button>
+            <button md-button color="primary" (click)="down()"><md-icon>expand_more</md-icon> down</button>
+        </md-card>
+
+        <br>
+
+        <md-card *ngIf="this.page">
+            <div>Display:</div>
+            <br>
+            <div><md-checkbox (change)="toggle($event, 'cursor2')" checked="true">Movements</md-checkbox></div>
+            <div><md-checkbox (change)="toggle($event, 'click2')" checked="true">Clicks</md-checkbox></div>
+        </md-card>
+    </div>
+
+    <md-card id="article" [class.center]="this.loading" [class.hidden]="!this.page">
+        <div id="spinner" *ngIf="this.loading">
+            <md-spinner></md-spinner>
+        </div>
+        <div id="tracking-container" [hidden]="this.loading">
+            <iframe id="live-iframe" scrolling="no"></iframe>
+            <div id="cursors"></div>
+        </div>
+    </md-card>
+
+</div>

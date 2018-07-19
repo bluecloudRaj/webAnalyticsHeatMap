@@ -1,0 +1,33 @@
+<md-toolbar id="nav" color="primary" class="mat-elevation-z6">
+	<a routerLink="/" md-button>
+		<md-icon>home</md-icon>
+		Heater
+	</a>
+	<span class="spacer"></span>
+	<a *ngIf="userService.isLoggedIn" routerLink="/websites" md-button>Websites</a>
+	<a *ngIf="userService.isLoggedIn" (click)="logout()" md-button>Logout</a>
+	<a *ngIf="!userService.isLoggedIn" routerLink="/login" md-button>Login</a>
+	<a *ngIf="!userService.isLoggedIn" routerLink="/register" md-button>Register</a>
+</md-toolbar>
+
+<div id="content">
+	<div id="flex">
+		<header *ngIf="title" class="title bg-primary">
+			<div id="title">
+				<h1>{{ title }}</h1>
+				<div id="back-button">
+					<button md-button (click)="goBack()">
+						<md-icon>arrow_back</md-icon> back
+					</button>
+				</div>
+			</div>
+			<p *ngIf="description">{{ description }}</p>
+		</header>
+
+		<div id="page-content">
+			<router-outlet></router-outlet>
+		</div>
+		<footer class="bg-primary">&copy; 2017 Heater</footer>
+	</div>
+	
+</div>

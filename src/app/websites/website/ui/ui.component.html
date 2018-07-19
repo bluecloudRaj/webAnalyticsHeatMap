@@ -1,0 +1,21 @@
+<div id="boxes">
+
+    <div id="aside">
+        <md-card>
+            <md-select placeholder="Choose a page" (change)="onChange($event)" name="page">
+                <md-option *ngFor="let page of this.pages" [value]="page._id">
+                    {{ page.page }}
+                </md-option>
+            </md-select>
+        </md-card>
+    </div>
+
+    <md-card id="article" *ngIf="this.page" [class.center]="this.loading">
+        <div id="spinner" *ngIf="this.loading">
+            <md-spinner></md-spinner>
+        </div>
+        <p *ngIf="!this.loading && this.suggestions.length == 0">Everything seems to be fine!</p>
+        <p *ngFor="let suggestion of this.suggestions">{{ suggestion }}</p>
+    </md-card>
+
+</div>

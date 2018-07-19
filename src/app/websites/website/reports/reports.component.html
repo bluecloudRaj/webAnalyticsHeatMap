@@ -1,0 +1,45 @@
+<div id="boxes">
+
+    <div id="aside">
+        <md-card>
+            <md-select placeholder="Choose a visitor" name="visitor" [(ngModel)]="visitor">
+                <md-option *ngFor="let visitor of visitors" [value]="visitor._id" routerLink="./" [queryParams]="{ visitor: visitor._id }">
+                    #{{ visitor._id }}
+                </md-option>
+            </md-select>
+        </md-card>
+
+        <br>
+
+        <md-card id="info" *ngIf="sessions.length > 0">
+            <md-card-content>
+                <p><md-icon mdTooltip="Operation system" color="accent">devices_other</md-icon> <span>{{ sessions[0].meta.agent.os }}</span></p>
+                <p><md-icon mdTooltip="Browser" color="accent">web</md-icon> <span >{{ sessions[0].meta.agent.browser }}</span></p>
+                <p><md-icon mdTooltip="IP address" color="accent">router</md-icon> <span>{{ sessions[0].meta.ip }}</span></p>
+            </md-card-content>
+        </md-card>
+    </div>
+
+    <md-card id="article" *ngIf="visitor">
+        <table class="full-page">
+            <tr *ngIf="sessions.length > 0">
+                <th>Page</th>
+                <th>Date</th>
+                <th>Session length</th>
+                <th>Resolution</th>
+                <th>Action</th>
+            </tr>
+            <tr *ngIf="sessions.length == 0">
+                <td>No sessions found</td>
+            </tr>
+            <tr *ngFor="let session of sessions">
+                <td>{{ session.page }}</td>
+                <td>{{ session.meta.createdAt | date: 'dd.MM.yyyy HH:mm:ss' }}</td>
+                <td>{{ calcLength(session.actionFirst[0].createdAt, session.actionLast[0].createdAt) }}</td>
+                <td>{{ session.meta.width }}x{{ session.meta.height }}px</td>
+                <td><a routerLink="./../visitors/{{ session._id }}" md-raised-button color="primary">View</a></td>
+            </tr>
+        </table>
+    </md-card>
+
+</div>

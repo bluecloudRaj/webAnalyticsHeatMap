@@ -1,0 +1,37 @@
+<md-card>
+    <table class="full-page">
+        <tr *ngIf="sessions.length != 0">
+            <th>Visitor</th>
+            <th>Date</th>
+            <th>Page</th>
+            <th>Action</th>
+        </tr>
+        <tr *ngIf="sessions.length == 0">
+            <td>There are no recorded visitors yet.</td>
+        </tr>
+        <tr *ngFor="let session of sessions">
+            <td>#{{ session.visitor }}</td>
+            <td>{{ session.meta.createdAt | date: 'dd.MM.yyyy HH:mm:ss' }}</td>
+            <td>{{ session.page }}</td>
+            <td>
+                <a routerLink="./{{ session._id }}" md-raised-button color="primary">View</a>
+                <button md-raised-button color="warn" md-button (click)="onDelete(session)">Delete</button>
+            </td>
+        </tr>
+    </table>
+</md-card>
+
+<br>
+
+<md-card>
+    <ul id="pagination">
+        <li>
+            <button mdTooltip="Reload" md-icon-button md-raised-button color="primary" (click)="reload()"><md-icon>refresh</md-icon></button>
+        </li>
+        <li *ngFor="let p of this.pagination" [class.active]="p == this.page">
+            <a md-icon-button md-raised-button color="primary" [routerLink]="['./', { page: p }]" *ngIf="p != -1">{{ p }}</a>
+            <!-- <a md-button routerLink="./" [queryParams]="{ page: p }" *ngIf="p != -1">{{ p }}</a> -->
+            <div class="spacer" *ngIf="p == -1">...</div>
+        </li>
+    </ul>
+</md-card>

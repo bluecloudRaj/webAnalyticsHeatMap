@@ -1,0 +1,13 @@
+<md-card>
+	<form (ngSubmit)="onSubmit(form.value)" [formGroup]="form" class="columns" novalidate>
+		<md-input-container [class.has-error]="!form.controls.url.valid && form.controls.url.touched">
+			<input type="url" formControlName="url" mdInput placeholder="Url *">
+	    	<md-hint>
+	      		<span *ngIf="form.controls.url.hasError('required') && form.controls.url.touched">Url is required.</span>
+	      		<span *ngIf="form.controls.url.hasError('pattern') && form.controls.url.touched">Invalid url address. Please follow this format: http://www.example.com</span>
+	    	</md-hint>
+		</md-input-container>
+
+		<button type="submit" [disabled]="!form.valid" md-button color="primary">Create</button>
+	</form>
+</md-card>

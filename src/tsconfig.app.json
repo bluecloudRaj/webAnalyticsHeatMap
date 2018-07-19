@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "lib": [
+      "es2016",
+      "dom"
+    ],
+    "outDir": "../out-tsc/app",
+    "target": "es5",
+    "module": "es2015",
+    "baseUrl": "",
+    "packages": {
+        "socket.io-client": {"defaultExtension": "js"},
+        "move-js": {"defaultExtension": "js"}
+    },
+    "map": {
+        "@angular/material": "npm:@angular/material/bundles/material.umd.js",
+        "socket.io-client": "npm:socket.io-client/socket.io.js",
+        "move-js": "npm:move-js/move.js"
+    },
+    "types": ["hammerjs"]
+  },
+  "exclude": [
+    "test.ts",
+    "**/*.spec.ts"
+  ]
+}

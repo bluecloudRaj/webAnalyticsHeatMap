@@ -1,0 +1,21 @@
+<md-card>
+	<form (ngSubmit)="onSubmit(loginForm.value)" [formGroup]="loginForm" class="columns">
+		<md-input-container [class.has-error]="!loginForm.controls.email.valid && loginForm.controls.email.touched">
+			<input type="email" formControlName="email" mdInput placeholder="Email address *">
+	    	<md-hint>
+	      		<span *ngIf="loginForm.controls.email.hasError('required') && loginForm.controls.email.touched">Email address is required.</span>
+	      		<span *ngIf="loginForm.controls.email.hasError('pattern') && loginForm.controls.email.touched">This is not a valid email address.</span>
+	    	</md-hint>
+		</md-input-container>
+
+		<md-input-container [class.has-error]="!loginForm.controls.password.valid && loginForm.controls.password.touched">
+			<input type="password" formControlName="password" mdInput placeholder="Password *">
+			<md-hint>
+	      		<span *ngIf="loginForm.controls.password.hasError('required') && loginForm.controls.password.touched">Password is required.</span>
+	      		<span *ngIf="loginForm.controls.password.hasError('minlength') && loginForm.controls.password.touched">Password must have at least 6 characters.</span>
+	    	</md-hint>
+		</md-input-container>
+
+		<button type="submit" [disabled]="!loginForm.valid" md-button color="primary">Login</button>
+	</form>
+</md-card>

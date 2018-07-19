@@ -1,0 +1,28 @@
+.full-page {
+    width: 100%;
+}
+th {
+    text-align: left;
+}
+tr:hover td {
+    background: rgba(100, 100, 100, 0.1);
+}
+#pagination {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li {
+        display: inline-block;
+        a {
+            margin-right: 6px;
+        }
+        &.active a {
+            background-color: #ffd740;
+        }
+        .spacer {
+            padding: 8px 8px 8px 4px;
+            line-height: 16px;
+            color: #673ab7;
+        }
+    }
+}

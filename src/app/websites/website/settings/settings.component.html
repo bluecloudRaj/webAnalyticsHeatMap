@@ -1,0 +1,13 @@
+<md-card>
+    <form (ngSubmit)="onSubmit(form.value)" [formGroup]="form" class="columns" novalidate>
+        <md-input-container [class.has-error]="!form.controls.viewportDesktop.valid && form.controls.viewportDesktop.touched">
+            <input type="number" step="50" formControlName="viewportDesktop" mdInput placeholder="Viewport size (px) *">
+            <md-hint>
+                <span *ngIf="form.controls.viewportDesktop.hasError('required') && form.controls.viewportDesktop.touched">Viewport desktop size is required.</span>
+                <span *ngIf="form.controls.viewportDesktop.hasError('pattern') && form.controls.viewportDesktop.touched">Invalid value</span>
+            </md-hint>
+        </md-input-container>
+
+        <button type="submit" [disabled]="!form.valid" md-button color="primary">Update</button>
+    </form>
+</md-card>

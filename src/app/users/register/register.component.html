@@ -1,0 +1,37 @@
+<md-card>
+	<form (ngSubmit)="onSubmit(registerForm.value)" [formGroup]="registerForm" class="columns">
+		<md-input-container>
+			<input type="text" formControlName="firstName" mdInput placeholder="First name">
+		</md-input-container>
+
+		<md-input-container>
+			<input type="text" formControlName="lastName" mdInput placeholder="Last name">
+		</md-input-container>
+
+		<md-input-container [class.has-error]="!registerForm.controls.email.valid && registerForm.controls.email.touched">
+			<input type="email" formControlName="email" mdInput placeholder="Email address *">
+        	<md-hint>
+          		<span *ngIf="registerForm.controls.email.hasError('required') && registerForm.controls.email.touched">Email address is required.</span>
+          		<span *ngIf="registerForm.controls.email.hasError('pattern') && registerForm.controls.email.touched">This is not a valid email address.</span>
+        	</md-hint>
+		</md-input-container>
+
+		<md-input-container formGroupName="passwords" [class.has-error]="!registerForm.controls.passwords.controls.password.valid && registerForm.controls.passwords.controls.password.touched">
+			<input type="password" formControlName="password" mdInput placeholder="Password *">
+			<md-hint>
+          		<span *ngIf="registerForm.controls.passwords.controls.password.hasError('required') && registerForm.controls.passwords.controls.password.touched">Password is required.</span>
+          		<span *ngIf="registerForm.controls.passwords.controls.password.hasError('minlength') && registerForm.controls.passwords.controls.password.touched">Password must have at least 6 characters.</span>
+        	</md-hint>
+		</md-input-container>
+
+		<md-input-container formGroupName="passwords" [class.has-error]="(!registerForm.controls.passwords.controls.passwordConfirm.valid && registerForm.controls.passwords.controls.passwordConfirm.touched) || registerForm.controls.passwords.hasError('match')">
+			<input type="password" formControlName="passwordConfirm" mdInput placeholder="Password confirm *">
+			<md-hint>
+          		<span *ngIf="registerForm.controls.passwords.controls.passwordConfirm.hasError('required') && registerForm.controls.passwords.controls.passwordConfirm.touched">Password confirm is required.</span>
+          		<span *ngIf="registerForm.controls.passwords.hasError('match') && registerForm.controls.passwords.controls.passwordConfirm.touched">Password doesn't match.</span>
+        	</md-hint>
+		</md-input-container>
+
+		<button type="submit" [disabled]="!registerForm.valid" md-button color="primary">Register</button>
+	</form>
+</md-card>

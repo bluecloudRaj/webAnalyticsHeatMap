@@ -1,0 +1,39 @@
+<div id="boxes">
+
+    <div id="aside">
+        <md-card>
+            <md-select placeholder="Choose a page" (change)="onChange($event)" name="page">
+                <md-option *ngFor="let page of this.website.pages" [value]="page._id">
+                    {{ page.page }}
+                </md-option>
+            </md-select>
+        </md-card>
+
+        <br>
+
+        <md-card *ngIf="this.page">
+            <p>{{ users.length }} {users.length, plural, =0 {users} =1 {user} other {users}} online</p>
+
+            <div *ngFor="let user of users">
+                <div>#{{ user.visitor }}</div>
+            </div>
+        </md-card>
+
+        <br>
+
+        <md-card *ngIf="this.page">
+            <div>Move page content:</div>
+            <br>
+            <button md-button color="primary" (click)="up()"><md-icon>expand_less</md-icon> up</button>
+            <button md-button color="primary" (click)="down()"><md-icon>expand_more</md-icon> down</button>
+        </md-card>
+    </div>
+
+    <md-card id="article">
+        <div id="live-tracking-container">
+            <iframe id="live-iframe" scrolling="no"></iframe>
+            <div id="live-cursors"></div>
+        </div>
+    </md-card>
+
+</div>

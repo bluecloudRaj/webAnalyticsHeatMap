@@ -1,0 +1,22 @@
+.spacer {
+	flex: 1 1 auto;
+}
+#nav {
+	position: relative;
+}
+#title {
+    h1 {
+        float: left;
+        width: 50%;
+    }
+    div#back-button {
+        float: right;
+        width: 50%;
+        text-align: right;
+    }
+    &&::after {
+        clear: both;
+        display: block;
+        content: " ";
+    }
+}
